@@ -13,9 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+# Allows to redirect to a view
+from django.views.generic import RedirectView
+from django.views.static import serve
+# Import MEDIA_ROOT from settings.py to enable to serve out our media URL
+from .setting import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # Root directory - redirect to posts directory
+    url(r'^$', RedirectView.as_view(url='posts/')),
+    # Want posts to pass using URLs in urls.py file in posts directory
+    url(r'posts/', include('posts.urls')),
+    # Point media towards path towards particular file
+    # Use servce library to serve up document root, which is MEDIA_ROOT
+    url(r'^media/(?<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]
