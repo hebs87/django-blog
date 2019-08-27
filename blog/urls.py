@@ -29,5 +29,5 @@ urlpatterns = [
     url(r'posts/', include('posts.urls')),
     # Point media towards path towards particular file
     # Use servce library to serve up document root, which is MEDIA_ROOT
-    url(r'^media/(?<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]
