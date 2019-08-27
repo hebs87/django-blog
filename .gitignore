@@ -1,3 +1,4 @@
 db.sqlite3\n.c9/
 .c9/
 *.sqlite3
+env.py
