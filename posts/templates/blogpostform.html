@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
+<!-- This should be loaded so that the forms work with Boostrap styles -->
+{% load bootstrap_tags %}
+
 {% block content %}
 
-
+    <h1>New Post</h1>
+    <!-- enctype needed when working with file uploads -->
+    <form method="POST" enctype="multipart/form-data">
+        <!-- csrf token needed when method="POST" -->
+        {% csrf_token %}
+        <!-- Format the form as a Bootstrap form -->
+        {{ form | as_bootstrap }}
+        <button type="submit" class="btn btn-info">Save</button>
+    </form>
 
 {% endblock %}
