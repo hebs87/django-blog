@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.views.generic import RedirectView
 from django.views.static import serve
 # Import MEDIA_ROOT from settings.py to enable to serve out our media URL
-from .setting import MEDIA_ROOT
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
