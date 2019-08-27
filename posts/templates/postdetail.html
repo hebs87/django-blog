@@ -2,6 +2,39 @@
 
 {% block content %}
 
-
+    <div class="row">
+        <div class="col-md-2 col-sm-3 text-center">
+            <a class="story-img" href="#">
+                <img src="/media/img/profile.jpg" class="img-circle">
+            </a>
+            <p><span class="boldtext">Author:</span> Niel</p>
+        </div>
+        <div class="col-sm-10 col-md-9">
+            <!-- Display the image if there is one, if not then leave it
+            Source is the media URL and the link to the image-->
+            {% if post.image %}
+                <img class="img-blogpost" src="/media/{{ post.image }}">
+            {% endif %}
+            <!-- Inject post title -->
+            <h3>{{ post.title }}</h3>
+            <div class="row">
+                <div class="col-xs-9">
+                    <!-- Inject all of the post content -->
+                    <p>{{ post.content }}</p>
+                    <!-- Published date -->
+                    <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
+                    <!-- Number of views -->
+                    <p><span class="boldtext">Views:</span> {{post.views}}</p>
+                    <!-- Tags -->
+                    <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
+                    <!-- Link to go back to the homepage -->
+                    <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
+                    <!-- Link to edit the post -->
+                    <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit Post</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>        
 
 {% endblock %}
